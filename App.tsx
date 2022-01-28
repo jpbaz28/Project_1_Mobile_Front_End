@@ -1,18 +1,39 @@
+import AsyncStorageLib from '@react-native-async-storage/async-storage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import HomePage from './components/Home-Page/home-page';
+import LoginPage from './components/Login-Page/login-page';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
+  const [user, setUser] = useState({
+    id: AsyncStorageLib.getItem('id'),
+    name: AsyncStorageLib.getItem('fullname'),
+    isAuthenticated: AsyncStorageLib.getItem('isAuthenticated'),
+    isManager: AsyncStorageLib.getItem('isManager'),
+    username: AsyncStorageLib.getItem('username'),
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const Stack = createNativeStackNavigator();
+
+  // if (!user.isAuthenticated) {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Login-Page'>
+        <Stack.Screen
+          name='Login-Page'
+          component={LoginPage}
+          options={{ title: 'Login Here' }}
+        />
+
+        <Stack.Screen
+          name='Home-Page'
+          component={HomePage}
+          options={{ title: 'You Fuck' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+  // }
+}
