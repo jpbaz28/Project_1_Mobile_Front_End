@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <>
       <View>
-        <Text>Fuck You Again!</Text>
+        <Text>Welcome!</Text>
       </View>
     </>
   );

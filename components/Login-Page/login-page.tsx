@@ -8,7 +8,7 @@ export default function LoginPage(props: { updateUser: Function }) {
 
   return (
     <View style={styles.container}>
-      <Text>Fuck You!</Text>
+      <Text>Welcome!</Text>
       <TextInput
         style={styles.input}
         placeholder='useless placeholder'

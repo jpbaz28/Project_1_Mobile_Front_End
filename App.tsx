@@ -30,7 +30,7 @@ export default function App() {
         <Stack.Screen
           name='Home-Page'
           component={HomePage}
-          options={{ title: 'You Fuck' }}
+          options={{ title: 'Home Page' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
